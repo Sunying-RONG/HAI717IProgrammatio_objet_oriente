@@ -6,12 +6,21 @@ public class Inscription {
 	private int codePays;
 	
 	// constructeur
+	public Inscription() {
+		this.codeInscription = 1;
+		this.codePays = 1;
+	}
+	
 	public Inscription(int codeInscription, int codePays) {
 		this.setCodeInscription(codeInscription);
 		this.setCodePays(codePays);
 	}
 	
 	// accesseurs
+	public int getCodeInscripiton() {
+		return this.codeInscription;
+	}
+	
 	public void setCodeInscription(int codeInscription) {
 		if (codeInscription == 1 || codeInscription == 2) {
 			this.codeInscription = codeInscription;
@@ -21,8 +30,8 @@ public class Inscription {
 		
 	}
 	
-	public int getCodeInscripiton() {
-		return this.codeInscription;
+	public int getCodePays() {
+		return this.codePays;
 	}
 	
 	public void setCodePays(int codePays) {
@@ -31,10 +40,6 @@ public class Inscription {
 		} else {
 			System.out.println("Code pays doit être 1 ou 2 ou 3 !");
 		}
-	}
-	
-	public int getCodePays() {
-		return this.codePays;
 	}
 	
 	// methods
@@ -46,6 +51,8 @@ public class Inscription {
 			nationalite = "étudiant est étranger francophone";
 		} else if (this.codePays == 3) {
 			nationalite = "étudiant est étranger non francophone";
+		} else {
+			nationalite = "pas de natinalité renseignée !";
 		}
 		return nationalite;
 	}
@@ -56,6 +63,8 @@ public class Inscription {
 			typeIns = "c'est une première inscription";
 		} else if (this.codeInscription == 2) {
 			typeIns = "c'est une réinscription";
+		} else {
+			typeIns = "pas de type d'inscription renseignée !";
 		}
 		return typeIns;
 	}

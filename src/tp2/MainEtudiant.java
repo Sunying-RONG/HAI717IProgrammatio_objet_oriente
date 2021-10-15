@@ -101,9 +101,9 @@ public class MainEtudiant {
 		// Ouvrir le scanner
 		Scanner s = new Scanner(System.in);
 		//Utiliser la méthode saisie définie dans la classe Etudiant sur l'étudiant etud7 (vous choisissez les valeurs)
-		etud7.saisie(s);
+//		etud7.saisie(s);
 		//Vérifier grâce à la méthode toString que les informations concernant etud7 ont bien été initialisées
-		System.out.println(etud7);
+//		System.out.println(etud7);
 
 		/* Utilisation de la méthode moyenne */
 		// Calcul et affichage de la moyenne de Paul-Henri. A décommenter pour exemple
@@ -133,11 +133,17 @@ public class MainEtudiant {
 		System.out.println(etud6.ligneResultat());
 		System.out.println(etud7.ligneResultat());	
 		
-		Etudiant etud8 = new Etudiant("Pierre", 24, 1, 2);
-		System.out.println(etud8.toString());
+//		Etudiant etud8 = new Etudiant("Pierre", 24, 1, 2);
+//		System.out.println(etud8.toString());
 		
 		Etudiant etud9 = new Etudiant();
-		etud9.saisie(s);
-		System.out.println(etud9.toString());
+//		etud9.saisie(s);
+//		System.out.println(etud9.toString());
+		
+		Promotion promo = new Promotion();
+		promo.inscrire(etud1);
+		promo.inscrire(etud2);
+		System.out.println(promo.afficheEtudiants());
+		System.out.println(promo.getEtudiant(0));
 	}
 }
