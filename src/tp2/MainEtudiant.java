@@ -136,7 +136,7 @@ public class MainEtudiant {
 //		Etudiant etud8 = new Etudiant("Pierre", 24, 1, 2);
 //		System.out.println(etud8.toString());
 		
-		Etudiant etud9 = new Etudiant();
+//		Etudiant etud9 = new Etudiant();
 //		etud9.saisie(s);
 //		System.out.println(etud9.toString());
 		
@@ -145,5 +145,19 @@ public class MainEtudiant {
 		promo.inscrire(etud2);
 		System.out.println(promo.afficheEtudiants());
 		System.out.println(promo.getEtudiant(0));
+		
+		Promotion promo2021 = new Promotion(2021);
+		promo2021.inscrire(etud1);
+		promo2021.inscrire(etud2);
+		promo2021.inscrire(etud3);
+		promo2021.inscrire(etud4);
+		promo2021.inscrire(etud5);
+		promo2021.inscrire(etud6);
+		System.out.println("Liste des étudiants : \n"+promo2021.afficheEtudiants());
+		System.out.println("Nombre d'étudiants de promotion 2021: \n"+promo2021.nbEtudiants());
+		System.out.println("Le troisième étudiant inscrit dans la promotion 2021 : \n"+promo2021.getEtudiant(2));
+		System.out.println("La moyenne générale de la promotion est : \n"+promo2021.moyenneGenerale());
+		promo2021.afficheResultats();
+		System.out.println("Recherche étudiant par nom : \n"+promo2021.recherche("Jean"));
 	}
 }
