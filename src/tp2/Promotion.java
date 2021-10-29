@@ -1,12 +1,17 @@
 package tp2;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.Set;
 
 public class Promotion {
 	// attribut
 	private ArrayList<Etudiant> listEtudiant = new ArrayList<>();
 	private int annee;
 	private ArrayList<Etudiant> listeAdmis = new ArrayList<>();
+	private Enumeration<Integer> keys;
 	
 	// constructeur 
 	public Promotion() {
@@ -158,4 +163,40 @@ public class Promotion {
 		}
 		return nouveauxInscritsNonFrancophones;
 	}
+	
+	public void histogramme() {
+		Hashtable<Integer, Integer> table = new Hashtable<Integer, Integer>();
+		for (int i=0; i<20; i++) {
+			table.put(i, 0);
+		}
+		for (Etudiant etud : this.listEtudiant) {
+			double moy = etud.moyenne();
+			int moyInt = (int) moy;
+			if (moyInt == 20) {
+				table.put(19, table.get(19)+1);
+			} else {
+				table.put(moyInt, table.get(moyInt)+1);
+			}
+		}
+		Set<Integer> keys = table.keySet();
+		ArrayList<Integer> keysSorted = new ArrayList<>();
+		keysSorted.addAll(keys);
+		Collections.reverse(keysSorted);
+		for (Integer key : keysSorted) {
+			if (key < 19) {
+				String line = "["+key+"-"+(key+1)+"[ ";
+				for (int i=0; i<table.get(key); i++) {
+					line+= "*";
+				}
+				System.out.println(line);
+			} else {
+				String line = "["+key+"-"+(key+1)+"] ";
+				for (int i=0; i<table.get(key); i++) {
+					line+= "*";
+				}
+				System.out.println(line);
+			}
+		}
+	}
+	
 }

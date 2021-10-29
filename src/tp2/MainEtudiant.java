@@ -2,7 +2,9 @@ package tp2;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Scanner;
+import java.util.Set;
 
 public class MainEtudiant {
 
@@ -47,13 +49,19 @@ public class MainEtudiant {
 		etud1.setNoteSyst(15);
 		etud1.setNoteStage(14);
 			
-		etud2.setNoteProg(8);
+		etud2.setNoteProg(1);
 		etud2.setNoteSyst(7);
 		etud2.setNoteStage(11);	
+//		etud2.setNoteProg(20);
+//		etud2.setNoteSyst(20);
+//		etud2.setNoteStage(20);	
 			
-		etud3.setNoteProg(10);
-		etud3.setNoteSyst(14);
-		etud3.setNoteStage(11);
+//		etud3.setNoteProg(10);
+//		etud3.setNoteSyst(14);
+//		etud3.setNoteStage(11);
+		etud3.setNoteProg(20);
+		etud3.setNoteSyst(20);
+		etud3.setNoteStage(19);
 		
 		etud4.setNoteProg(12);
 		etud4.setNoteSyst(5);
@@ -183,5 +191,7 @@ public class MainEtudiant {
 		for (Etudiant etud : nouveauxInscritsNonFrancophones) {
 			System.out.println(etud.toString());
 		}
+	
+		promo2021.histogramme();
 	}
 }
