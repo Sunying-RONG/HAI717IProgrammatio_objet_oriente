@@ -27,7 +27,6 @@ public class Inscription {
 		} else {
 			System.out.println("Code d'inscription doit être 1 ou 2 !");
 		}
-		
 	}
 	
 	public int getCodePays() {

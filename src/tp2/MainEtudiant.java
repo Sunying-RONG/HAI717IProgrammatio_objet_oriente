@@ -1,6 +1,7 @@
 package tp2;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MainEtudiant {
@@ -58,9 +59,9 @@ public class MainEtudiant {
 		etud4.setNoteSyst(5);
 		etud4.setNoteStage(18);
 		
-		etud5.setNoteProg(2);
-		etud5.setNoteSyst(10);
-		etud5.setNoteStage(22);
+		etud5.setNoteProg(15);
+		etud5.setNoteSyst(14);
+		etud5.setNoteStage(17);
 
 		/* Verification que les modifications ont bien été prises en compte */
 		
@@ -157,7 +158,30 @@ public class MainEtudiant {
 		System.out.println("Nombre d'étudiants de promotion 2021: \n"+promo2021.nbEtudiants());
 		System.out.println("Le troisième étudiant inscrit dans la promotion 2021 : \n"+promo2021.getEtudiant(2));
 		System.out.println("La moyenne générale de la promotion est : \n"+promo2021.moyenneGenerale());
+		
 		promo2021.afficheResultats();
 		System.out.println("Recherche étudiant par nom : \n"+promo2021.recherche("Jean"));
+		
+		ArrayList<Etudiant> listeAdmis = promo2021.listeAdmis();
+		if (listeAdmis.size() > 0) {
+			for (Etudiant etud : listeAdmis) {
+				System.out.println("Nom d'étudiant admis : " + etud.getNom() + ", sa note moyenne est : " + etud.moyenne());
+			}
+		}
+		
+		System.out.println("Nom de major de promo : " + promo2021.major());
+		
+		System.out.println("Les noms de majors et leur moyenne : ");
+		ArrayList<Etudiant> majors = promo2021.majors();
+		for (Etudiant etud : majors) {
+			System.out.println(etud.getNom());
+		}
+		System.out.println(majors.get(0).moyenne());
+		
+		ArrayList<Etudiant> nouveauxInscritsNonFrancophones = promo2021.nouveauxInscritsNonFrancophones();
+		System.out.println("Le nombre d'étudiant nouvellement inscrits et non francophoes : " + nouveauxInscritsNonFrancophones.size());
+		for (Etudiant etud : nouveauxInscritsNonFrancophones) {
+			System.out.println(etud.toString());
+		}
 	}
 }

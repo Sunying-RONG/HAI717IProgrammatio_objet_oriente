@@ -6,6 +6,7 @@ public class Promotion {
 	// attribut
 	private ArrayList<Etudiant> listEtudiant = new ArrayList<>();
 	private int annee;
+	private ArrayList<Etudiant> listeAdmis = new ArrayList<>();
 	
 	// constructeur 
 	public Promotion() {
@@ -60,7 +61,6 @@ public class Promotion {
 		} else {
 			return null;
 		}
-		
 	}
 	
 	public double moyenneGenerale() {
@@ -97,4 +97,65 @@ public class Promotion {
 		return trouve;
 	}
 	
+	public ArrayList<Etudiant> listeAdmis() {
+		for (Etudiant etud : listEtudiant) {
+			if (etud.moyenne() >= 10) {
+				this.listeAdmis.add(etud);
+			}
+		}
+		return listeAdmis;
+	}
+	
+	public String major() {
+		String majorNom = null;
+		double majorNote = 0;
+		ArrayList<Etudiant> list;
+		if (listeAdmis.size() > 0) {
+			list = this.listeAdmis;
+		} else {
+			list = this.listEtudiant;
+		}
+		for (Etudiant etud : list) {
+			if (etud.moyenne() > majorNote) {
+				majorNote = etud.moyenne();
+				majorNom = etud.getNom();
+			}
+		}
+		return majorNom;
+	}
+	
+	public double majorNote() {
+		double majorNote = 0;
+		ArrayList<Etudiant> list = listeAdmis.size() > 0 ? this.listeAdmis : this.listEtudiant;
+		for (Etudiant etud : list) {
+			if (etud.moyenne() > majorNote) {
+				majorNote = etud.moyenne();
+			}
+		}
+		return majorNote;
+	}
+	
+	public ArrayList<Etudiant> majors() {
+		ArrayList<Etudiant> majors = new ArrayList<>();
+		double majorNote = this.majorNote();
+		ArrayList<Etudiant> list = listeAdmis.size() > 0 ? this.listeAdmis : this.listEtudiant;
+		for (Etudiant etud : list) {
+			if (etud.moyenne() == majorNote) {
+				majors.add(etud);
+			}
+		}
+		return majors;
+	}
+	
+	public ArrayList<Etudiant> nouveauxInscritsNonFrancophones() {
+		ArrayList<Etudiant> nouveauxInscritsNonFrancophones = new ArrayList<>();
+		for (Etudiant etud : this.listEtudiant) {
+			System.out.println(etud.toString());
+			Inscription insc = etud.getInscription();
+			if (insc != null && insc.getCodePays() == 3 && insc.getCodeInscripiton() == 1) {
+				nouveauxInscritsNonFrancophones.add(etud);
+			}
+		}
+		return nouveauxInscritsNonFrancophones;
+	}
 }
